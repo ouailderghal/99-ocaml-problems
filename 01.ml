@@ -1,11 +1,15 @@
-(* 
-   Write a function last : 'a list -> 'a option that returns the last
-   element of a list
-*)
-
-let rec last (lst : 'a list) : 'a option  =
+(* Last element of a list *)
+let rec last (lst : 'a list) : 'a option =
   match lst with
   | [] -> None
   | [x] -> Some x
-  | _ :: rest -> last(rest);;
+  | _ :: rest -> last rest;;
 
+(* Last element in a list if integers. *)
+exception EmptyList of string;;
+
+let rec last_int (lst : int list) : int =
+  match lst with
+  | [] -> raise (EmptyList "list is empty")
+  | [x] -> x
+  | _ :: rest -> last_int rest;;
