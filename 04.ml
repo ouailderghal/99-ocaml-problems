@@ -25,3 +25,10 @@ let length_int (lst: int list) : int =
     | _ :: tail -> aux (n + 1) tail
   in
     aux 0 lst;;
+
+(* Length of a list with a simpler solution *)
+let rec length_simple (lst: 'a list) : int =
+  match lst with
+  | [] -> 0
+  | _ :: tail -> 1 + length_simple tail;;
+
